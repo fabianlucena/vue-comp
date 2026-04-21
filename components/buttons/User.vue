@@ -6,7 +6,7 @@
 
 <script setup>
 import Button from '../Button.vue';
-import IconUser from '../icons/IUser.vue';
+import IconUser from '../icons/User.vue';
 
 defineOptions({
   name: 'ButtonUser',
