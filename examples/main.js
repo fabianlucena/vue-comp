@@ -5,4 +5,4 @@ import { style } from '../components/Style';
 
 const app = createApp(App);
 app.provide('style', style);
-app.mount('#app')
+app.mount('#app');

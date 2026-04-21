@@ -5,7 +5,7 @@
   >
     <li
       v-for="item in localItems" :key="item.name"
-      :class="{ 'menu-item': true, 'has-submenu': item.items }"
+      :class="{ 'button': true, 'menu': true, 'clickable': true, 'menu-item': true, 'has-submenu': item.items }"
     >
       <a
         :href="item.link || '#'"
@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, setBlockTracking } from 'vue';
 
 defineOptions({
   name: 'MenuItem'
@@ -61,6 +61,7 @@ const emitHide = defineEmits(['hide']);
 const localItems = computed(() => props.items);
 const mainStyle = inject('style', {});
 const style = {
+  ...mainStyle?.button,
   ...mainStyle?.menu,
 };
 
@@ -105,7 +106,6 @@ ul.menu {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 li.menu-item {
@@ -116,11 +116,7 @@ li.menu-item {
   display: block;
   padding: .3em .8em;
   text-decoration: none;
-  color: #333;
-}
-
-.menu-item > .label:hover {
-  box-shadow: .1em .1em .1em .1em #ccc;
+  color: inherit;
 }
 
 .has-submenu .label::after {
@@ -129,7 +125,6 @@ li.menu-item {
 
 .submenu {
   position: fixed;
-  background-color: #f0f0f0;
 }
 
 </style>

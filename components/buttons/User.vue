@@ -1,11 +1,11 @@
 <template>
-  <Button>
+  <ButtonIcon>
     <IconUser />
-  </Button>
+  </ButtonIcon>
 </template>
 
 <script setup>
-import Button from '../Button.vue';
+import ButtonIcon from '../ButtonIcon.vue';
 import IconUser from '../icons/User.vue';
 
 defineOptions({

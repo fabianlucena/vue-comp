@@ -4,5 +4,8 @@ export const style = reactive({
   color: '#000000',
   backgroundColor: '#ffffff',
   fontSize: '16px',
-  fontFamily: "'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"
+  fontFamily: '"Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif',
+  button: {
+    backgroundColor: '#e0e0e0',
+  },
 });

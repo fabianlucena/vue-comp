@@ -1,7 +1,7 @@
 <template>
   <nav>
     <MenuItem
-      class="menu-bar"
+      class="button menu menu-bar"
       :items="props.items"
     />
   </nav>
@@ -24,10 +24,6 @@ const props = defineProps({
 
 .menu-bar {
   display: flex;
-}
-
-.menu-bar {
-  background-color: #e0e0e0;
 }
 
 .menu-bar > li:not(:first-child) {
