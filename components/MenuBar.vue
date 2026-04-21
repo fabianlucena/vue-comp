@@ -1,29 +1,38 @@
 <template>
   <nav>
     <MenuItem
-      class="button menu menu-bar"
+      :class="['button menu menu-bar', props.class]"
       :items="props.items"
     />
   </nav>
 </template>
 
 <script setup>
-
 import MenuItem from './MenuItem.vue';
 
 const props = defineProps({
+  class: {
+    type: [String, Array, Object],
+    default: '',
+  },
+
   items: {
     type: Array,
-    required: true
-  }
+    required: true,
+  },
 });
-
 </script>
 
 <style>
 
 .menu-bar {
   display: flex;
+  flex: 1;
+}
+
+.menu-bar.vertical {
+  flex-direction: column;
+  height: 100%;
 }
 
 .menu-bar > li:not(:first-child) {
