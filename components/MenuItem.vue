@@ -26,6 +26,7 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
 
 defineOptions({
   name: 'MenuItem'
@@ -57,7 +58,7 @@ function hideSubmenusGlobal(evt) {
 
 const emitHide = defineEmits(['hide']);
 
-const localItems = isProxy(props.items) ? props.items : ref(structuredClone(props.items));
+const localItems = computed(() => props.items);
 const mainStyle = inject('style', {});
 const style = {
   ...mainStyle?.menu,

@@ -2,7 +2,7 @@
   <nav>
     <MenuItem
       class="menu-bar"
-      :items="items"
+      :items="props.items"
     />
   </nav>
 </template>
