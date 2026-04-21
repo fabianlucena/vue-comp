@@ -1,11 +1,38 @@
+:root {
+  --primary-background-color: #F0F0F0;
+  --primary-color: #202020;
+  --header-background-color: #b0b0b0;
+  --header-color: #404040;
+  --button-background-color: #d0d0d0;
+  --button-color: #404040;
+  --button-highlight-background-color: #c0c0c0;
+  --button-highlight-color: #303050;
+  --button-highlight-shadow-color: #808080;
+  --button-highlight-shadow: .1em .1em .2em .1em var(--button-highlight-shadow-color);
+}
+
+html[data-theme="dark"]:root {
+  --primary-background-color: #202020;
+  --primary-color: #d0d0d0;
+  --header-background-color: #303030;
+  --header-color: #d0d0d0;
+  --button-background-color: #606060;
+  --button-color: #c0c0c0;
+  --button-highlight-background-color: #606060;
+  --button-highlight-color: #b8b8c8;
+  --button-highlight-shadow-color: #808080;
+}
+
 .button {
-  background-color: #e0e0e0;
-  color: #303030;
+  background-color: var(--button-background-color);
+  color: var(--button-color);
 }
 
 .button.clickable:hover {
-  box-shadow: .1em .1em .1em .1em #c0c0c0;
-  color: #303090;
+  box-shadow: var(--button-highlight-shadow);
+  color: var(--button-highlight-color);
+  background-color: var(--button-highlight-background-color);
+  text-decoration: underline;
 }
 
 .button-icon {

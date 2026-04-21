@@ -14,5 +14,7 @@ header {
   justify-content: space-between;
   padding: .25em;
   font-size: 150%;
+  background-color: var(--header-background-color);
+  color: var(--header-color);
 }
 </style>
