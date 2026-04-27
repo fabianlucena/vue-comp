@@ -18,7 +18,7 @@ html[data-theme="dark"]:root {
   --header-color: #d0d0d0;
   --button-background-color: #606060;
   --button-color: #c0c0c0;
-  --button-highlight-background-color: #606060;
+  --button-highlight-background-color: #707070;
   --button-highlight-color: #b8b8c8;
   --button-highlight-shadow-color: #808080;
 }
@@ -32,7 +32,6 @@ html[data-theme="dark"]:root {
   box-shadow: var(--button-highlight-shadow);
   color: var(--button-highlight-color);
   background-color: var(--button-highlight-background-color);
-  text-decoration: underline;
 }
 
 .button-icon {
