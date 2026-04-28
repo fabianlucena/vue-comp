@@ -34,6 +34,7 @@ html[data-theme="dark"]:root {
   box-shadow: var(--button-highlight-shadow);
   color: var(--button-highlight-color);
   background-color: var(--button-highlight-background-color);
+  z-index: 1;
 }
 
 .button-icon {
