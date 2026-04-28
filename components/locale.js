@@ -1,11 +1,16 @@
 let currentLocale = 'en';
 const translations = {};
-const localesModulesPaths = [ './locale/' ];
+const localesModulesPaths = [ '@vc/locale/' ];
+const aliasMap = {};
 
 await setLocale(navigator.language || navigator.userLanguage || 'en');
 
 export function _(key) {
   return translations[key] || key;
+}
+
+export async function setAliasMap(newAliasMap) {
+  Object.assign(aliasMap, newAliasMap);
 }
 
 export async function setLocale(locale) {
@@ -43,6 +48,12 @@ export async function updateTranslations() {
 }
 
 export async function loadTranslationsFrom(path) {
+  for (const key in aliasMap) {
+    if (path.startsWith(key)) {
+      path = path.replace(key, aliasMap[key]);
+    }
+  }
+  
   const localeModule = await import(path).catch(() => null);
   Object.assign(translations, localeModule.translations);
 }
