@@ -1,3 +1,5 @@
+import { computed } from 'vue';
+
 let currentLocale = 'en';
 const translations = {};
 const localesModulesPaths = [];
@@ -6,7 +8,7 @@ const aliasMap = {};
 await setLocale(navigator.language || navigator.userLanguage || 'en');
 
 export function _(key) {
-  return translations[key] || key;
+  return computed(() => translations[key] || key);
 }
 
 export async function setAliasMap(newAliasMap) {

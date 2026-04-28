@@ -18,7 +18,7 @@ const props = defineProps({
     type: String,
     default: '',
   },
-  label: String,
+  label: [String, Object],
   name: String,
   type: {
     type: String,

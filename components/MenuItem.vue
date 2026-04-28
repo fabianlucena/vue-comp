@@ -4,17 +4,17 @@
     :style="style"
   >
     <li
-      v-for="item in localItems" :key="item.name"
+      v-for="item in localItems" :key="toRaw(item.name)"
       :class="{ 'button': true, 'menu': true, 'clickable': true, 'menu-item': true, 'has-submenu': item.items }"
     >
       <component
         :is="props.itemType || 'a'"
         :href="item.link || '#'"
         class="label"
-        :data-item-name="item.name"
+        :data-item-name="toRaw(item.name)"
         @click.prevent.stop="onClick"
       >
-        {{ item.label || item.name }}
+        {{ item.label || toRaw(item.name) }}
       </component>
       <MenuItem
         v-if="item.items && item.showSubmenu"
@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-import { computed, setBlockTracking } from 'vue';
+import { computed, toRaw } from 'vue';
 
 defineOptions({
   name: 'MenuItem'
@@ -47,7 +47,7 @@ const props = defineProps({
   itemType: [Object, Function],
 });
 
-import { onMounted, onUnmounted, inject, ref, isProxy } from 'vue';
+import { onMounted, onUnmounted, inject, ref, isProxy, toValue } from 'vue';
 
 onMounted(() => window.addEventListener('click', hideSubmenusGlobal, true));
 onUnmounted(() => window.removeEventListener('click', hideSubmenusGlobal, true));
@@ -62,7 +62,17 @@ function hideSubmenusGlobal(evt) {
 
 const emit = defineEmits(['hide', 'action']);
 
-const localItems = computed(() => props.items);
+const localItems = computed(() => props.items.map(item => {
+  const name = toValue(item.name)
+      || toValue(item.label)
+      || Math.random().toString(36).slice(2, 10);
+
+  return {
+    ...item,
+    name,
+  };
+}));
+
 const mainStyle = inject('style', {});
 const style = {
   ...mainStyle?.button,
