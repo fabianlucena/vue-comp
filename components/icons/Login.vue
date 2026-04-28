@@ -19,7 +19,7 @@
 <script setup>
 
 defineOptions({
-    name: 'IconUser',
+    name: 'IconLogin',
 });
 
 </script>

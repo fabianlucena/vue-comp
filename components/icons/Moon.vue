@@ -8,7 +8,7 @@
   >
   <path
     d="M12 21.5a8.5 8.5 0 0 1-7.2-12.9A8.8 8.8 0 1 0 17 20.8 8.5 8.5 0 0 1 12 21.5Z"
-    transform="translate(3.5 -3.5)"
+    transform="translate(3.5 -4.0)"
     fill="#1A1A80"
     stroke="#1A1A80"
   />
