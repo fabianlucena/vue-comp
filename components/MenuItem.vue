@@ -7,18 +7,21 @@
       v-for="item in localItems" :key="item.name"
       :class="{ 'button': true, 'menu': true, 'clickable': true, 'menu-item': true, 'has-submenu': item.items }"
     >
-      <a
+      <component
+        :is="props.itemType"
         :href="item.link || '#'"
+        :to="item.to"
         class="label"
         :data-item-name="item.name"
         @click.prevent.stop="handleClick"
       >
         {{ item.label || item.name }}
-      </a>
+      </component>
       <MenuItem
         v-if="item.items && item.showSubmenu"
         :class="item.class ? item.class + ' submenu' : 'submenu'"
         :items="item.items"
+        :itemType="props.itemType"
         @hide="handleHide"
       />
     </li>
@@ -40,6 +43,10 @@ const props = defineProps({
   items: {
     type: Array,
     required: true
+  },
+  itemType: {
+    type: [Object, Function],
+    default: "a"
   },
 });
 

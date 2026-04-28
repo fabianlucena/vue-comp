@@ -3,6 +3,7 @@
     <MenuItem
       :class="['button menu menu-bar', props.class]"
       :items="props.items"
+      :itemType="props.itemType"
     />
   </nav>
 </template>
@@ -19,6 +20,11 @@ const props = defineProps({
   items: {
     type: Array,
     required: true,
+  },
+  
+  itemType: {
+    type: [Object, Function],
+    default: "a"
   },
 });
 </script>
