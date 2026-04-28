@@ -1,6 +1,6 @@
 <template>
   <Button
-    class="menu clickable button button-icon"
+    class="button-icon"
   >
     <slot></slot>
   </Button>

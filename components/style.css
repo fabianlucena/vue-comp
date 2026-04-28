@@ -26,6 +26,8 @@ html[data-theme="dark"]:root {
 .button {
   background-color: var(--button-background-color);
   color: var(--button-color);
+  border-radius: .2em;
+  border-width: .1em;
 }
 
 .button.clickable:hover {
