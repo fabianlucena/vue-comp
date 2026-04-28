@@ -4,6 +4,7 @@
       :class="['button menu menu-bar', props.class]"
       :items="props.items"
       :itemType="props.itemType"
+      @action="(evt, item) => emit('action', evt, item)"
     />
   </nav>
 </template>
@@ -22,11 +23,11 @@ const props = defineProps({
     required: true,
   },
   
-  itemType: {
-    type: [Object, Function],
-    default: "a"
-  },
+  itemType: [Object, Function],
 });
+
+const emit = defineEmits(['action']);
+
 </script>
 
 <style>

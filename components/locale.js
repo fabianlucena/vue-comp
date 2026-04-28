@@ -1,6 +1,6 @@
 let currentLocale = 'en';
 const translations = {};
-const localesModulesPaths = [ '@vc/locale/' ];
+const localesModulesPaths = [];
 const aliasMap = {};
 
 await setLocale(navigator.language || navigator.userLanguage || 'en');

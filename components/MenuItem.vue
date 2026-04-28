@@ -8,12 +8,11 @@
       :class="{ 'button': true, 'menu': true, 'clickable': true, 'menu-item': true, 'has-submenu': item.items }"
     >
       <component
-        :is="props.itemType"
+        :is="props.itemType || 'a'"
         :href="item.link || '#'"
-        :to="item.to"
         class="label"
         :data-item-name="item.name"
-        @click.prevent.stop="handleClick"
+        @click.prevent.stop="onClick"
       >
         {{ item.label || item.name }}
       </component>
@@ -22,7 +21,8 @@
         :class="item.class ? item.class + ' submenu' : 'submenu'"
         :items="item.items"
         :itemType="props.itemType"
-        @hide="handleHide"
+        @hide="onHide"
+        @action="(evt, item) => emit('action', evt, item)"
       />
     </li>
   </ul>
@@ -44,10 +44,7 @@ const props = defineProps({
     type: Array,
     required: true
   },
-  itemType: {
-    type: [Object, Function],
-    default: "a"
-  },
+  itemType: [Object, Function],
 });
 
 import { onMounted, onUnmounted, inject, ref, isProxy } from 'vue';
@@ -63,7 +60,7 @@ function hideSubmenusGlobal(evt) {
   hideSubmenus();
 }
 
-const emitHide = defineEmits(['hide']);
+const emit = defineEmits(['hide', 'action']);
 
 const localItems = computed(() => props.items);
 const mainStyle = inject('style', {});
@@ -87,7 +84,7 @@ function hideSubmenus(items) {
   });
 }
 
-function handleClick(evt) {
+function onClick(evt) {
   const item = getItemForEvent(evt);
   if (!item) {
     return;
@@ -97,12 +94,13 @@ function handleClick(evt) {
     item.showSubmenu = !item.showSubmenu;
   }
 
-  emitHide('hide', evt);
+  emit('hide', evt);
+  emit('action', evt, item);
 }
 
-function handleHide(evt) {
+function onHide(evt) {
   hideSubmenus();
-  emitHide('hide', evt);
+  emit('hide', evt);
 }
 
 </script>
