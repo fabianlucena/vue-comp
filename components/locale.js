@@ -55,7 +55,7 @@ export async function loadTranslationsFrom(path) {
       path = path.replace(key, aliasMap[key]);
     }
   }
-  
-  const localeModule = await import(path).catch(() => null);
+
+  const localeModule = await import(/* @vite-ignore */ path).catch(() => null);
   Object.assign(translations, localeModule.translations);
 }
